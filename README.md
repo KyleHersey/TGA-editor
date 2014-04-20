@@ -1,10 +1,11 @@
 To run the project, run proj.
 
 Otherwise, use the following commands in order:
-	rm proj
-	make clean
-	make
-	proj
+
+rm proj
+make clean
+make
+proj
 
 ----------------
 main.cpp start the program and calls the creation of the gui.
