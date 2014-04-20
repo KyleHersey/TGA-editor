@@ -2,9 +2,9 @@ To run the project, run proj.
 
 Otherwise, use the following commands in order:
 
-rm proj
-make clean
-make
+rm proj, 
+make clean, 
+make, 
 proj
 
 ----------------
