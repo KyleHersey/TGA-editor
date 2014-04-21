@@ -17,8 +17,10 @@ using std::ofstream;
 #include "string"
 using std::string;
 
+//zero parameter constructor
 image::image(){}
 
+//creates an imagefril from a string
 image::image(string inputFile){
 
     ifstream strm(inputFile.c_str(), std::ios::binary);
@@ -28,6 +30,7 @@ image::image(string inputFile){
         strm.get();
     }
 
+    //determines the width and height of the image
     unsigned char widthF1 = strm.get();
     unsigned char widthF2 = strm.get();
     unsigned char heightF1 = strm.get();
@@ -42,6 +45,7 @@ image::image(string inputFile){
 
     vec.resize(width, vector<pixel>(height));
 
+//assigns pixel objects to a two-dimensional vector
     for(int i = 0; i < width; i++){
         for(int j = 0; j < height; j++){
             unsigned char blue = strm.get();
@@ -95,6 +99,7 @@ void image::toFile(string name){
     strm.close();
 }
 
+//inverts each pixel
 void image::invert(){
     for(int i = 0; i < width; i++){
         for(int j = 0; j < height; j++){
@@ -105,6 +110,7 @@ void image::invert(){
     }
 }
 
+//flips the pixel's position horizontally
 void image::flipX(){
     image tempImage = *this;
 
@@ -115,6 +121,7 @@ void image::flipX(){
     }
 }
 
+//fl;ips the pixel's position vertically
 void image::flipY(){
     image tempImage = *this;
 
@@ -125,6 +132,7 @@ void image::flipY(){
     }
 }
 
+//makes each pixel the average of its surrounding cells
 void image::blur(){
     //make original image copy
     vector< vector<pixel> > backup;
@@ -179,6 +187,7 @@ void image::blur(){
     }
 }
 
+//makes the rgb values of each pixel equal, and scale to the total luminosity
 void image::greyScale(){
     for(int i = 0; i < width; i++){
         for(int j = 0; j < height; j++){
@@ -229,6 +238,7 @@ void image::rotateLeft(){
     }
 }
 
+//make the brightness of each pixel relative to the change in luminosity near it
 void image::edgeDetect(){
     vector< vector<pixel> > backup;
     backup.resize(height, vector<pixel>(width));
@@ -239,6 +249,7 @@ void image::edgeDetect(){
         }
     }
 
+    //acquire the changes in luminosity
     for(int i = 1; i <  height-1; i++){
         for(int j = 1; j < width-1; j++){
 

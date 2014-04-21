@@ -122,13 +122,13 @@ imageGUI::imageGUI(QWidget *parent)
     connect(edge, SIGNAL(clicked()), this, SLOT(edgeDetectMethod()));
 }
 
-
+//ensures that the input file exists.
 bool imageGUI::checkFile(const char* fileName){
     ifstream check(fileName);
     return check.good();
 }
 
-
+//inverts the color of the image
 void imageGUI::invertMethod(){
 
     QString inputQString = iFile->text();
@@ -146,6 +146,7 @@ void imageGUI::invertMethod(){
     inverted.toFile(outputFile);
 }
 
+//blurs the image
 void imageGUI::blurMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
@@ -162,6 +163,7 @@ void imageGUI::blurMethod(){
     blurred.toFile(outputFile);
 }
 
+//flips the image horizontally
 void imageGUI::flipXMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
@@ -178,6 +180,7 @@ void imageGUI::flipXMethod(){
     flippedX.toFile(outputFile);
 }
 
+//flips the image vertically
 void imageGUI::flipYMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
@@ -194,6 +197,7 @@ void imageGUI::flipYMethod(){
     flippedY.toFile(outputFile);
 }
 
+//makes image greyscale
 void imageGUI::greyMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
@@ -210,6 +214,7 @@ void imageGUI::greyMethod(){
     grey.toFile(outputFile);
 }
 
+//rotates thbe image 90 degrees to the right
 void imageGUI::rotateRightMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
@@ -226,6 +231,7 @@ void imageGUI::rotateRightMethod(){
     rotR.toFile(outputFile);
 }
 
+//rotates the image 90 degrees to the left
 void imageGUI::rotateLeftMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
@@ -242,6 +248,7 @@ void imageGUI::rotateLeftMethod(){
     rotL.toFile(outputFile);
 }
 
+//visualizes changes in luminosity
 void imageGUI::edgeDetectMethod(){
     QString inputQString = iFile->text();
     string inputFile = inputQString.toStdString();
